@@ -13,7 +13,6 @@ import type { ParsedSituation } from "./lib/intakeApi";
 import { buildPlan } from "./lib/plan";
 import { DEFAULT_SETTINGS, TEXT_SIZE_PERCENT } from "./lib/settings";
 import type { Settings } from "./lib/settings";
-import { SITE_URL } from "./lib/site";
 import { speak, stopSpeaking, isSpeechSupported } from "./lib/speech";
 import { EMPTY_PROFILE } from "./types";
 import type { Profile } from "./types";

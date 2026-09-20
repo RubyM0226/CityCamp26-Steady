@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import QrCode from "./QrCode";
+import QrCode from "./QRCode";
 import { SITE_URL } from "../lib/site";
 
 type FlyerScreenProps = {
