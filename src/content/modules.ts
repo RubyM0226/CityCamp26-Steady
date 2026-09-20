@@ -1,5 +1,7 @@
 import type { PlanModule } from "../types";
 
+const VERIFIED = "2026-09-20";
+
 export const modules: PlanModule[] = [
   {
     id: "registry",
@@ -11,18 +13,22 @@ export const modules: PlanModule[] = [
     ],
     text: {
       en_standard:
-        "Ask about Alachua County's Special Needs Registry. It is free, voluntary, and confidential, and it lets the county arrange transportation and shelter for residents with physical or mental limitations who have no other way to evacuate. The county decides who qualifies. You can sign up at any time, and if you cannot use the online form, call 352-264-6500.",
+        "Ask about Alachua County's Special Needs Registry. It is free, voluntary, and confidential. It lets the county arrange transportation and shelter for residents with physical or mental limitations who have no other way to evacuate. The county decides who qualifies. You can register online, or call 352-264-6500 if you cannot use the online form.",
       en_plain:
-        "The county keeps a free, private list of people who need help in a storm. If you are on it, the county can arrange a ride and a shelter for you. The county decides who can join. You can sign up any time. If you cannot use the website, call 352-264-6500.",
+        "The county keeps a free, private list of people who need help in a storm. If you are on it, the county can arrange a ride and a shelter for you. The county decides who can join. You can sign up online. If you cannot use the website, call 352-264-6500.",
     },
     links: [
       {
         label: "Special Needs Registry (Alachua County)",
         url: "https://alachuacounty.us/Depts/EM/Pages/special-needs-registry.aspx",
       },
+      {
+        label: "Formulario en español (Spanish form, PDF)",
+        url: "https://alachuacounty.us/Depts/EM/Documents/ADACompliant/SPNS%20Form%20Spanish.pdf",
+      },
     ],
     needs_check: false,
-    verified_on: null,
+    verified_on: VERIFIED,
   },
   {
     id: "alerts",
@@ -38,12 +44,16 @@ export const modules: PlanModule[] = [
     links: [
       { label: "Alachua County Ready", url: "https://alachuacountyready.com" },
       {
-        label: "County preparedness reminders",
-        url: "https://alachuacounty.us/news/Article/Pages/Hurricane-Preparedness-Reminders.aspx",
+        label: "Alert Alachua signup",
+        url: "https://member.everbridge.net/index/453003085613764#/signup",
+      },
+      {
+        label: "County disaster preparedness",
+        url: "https://alachuacounty.us/Depts/EM/Pages/preparedness.aspx",
       },
     ],
     needs_check: false,
-    verified_on: null,
+    verified_on: VERIFIED,
   },
   {
     id: "power_backup",
@@ -63,7 +73,7 @@ export const modules: PlanModule[] = [
       },
     ],
     needs_check: false,
-    verified_on: null,
+    verified_on: VERIFIED,
   },
   {
     id: "zone",
@@ -84,7 +94,7 @@ export const modules: PlanModule[] = [
       },
     ],
     needs_check: false,
-    verified_on: null,
+    verified_on: VERIFIED,
   },
   {
     id: "mobile_home",
@@ -93,18 +103,19 @@ export const modules: PlanModule[] = [
     applies_when_any: [{ field: "home_type", equals: "mobile_home" }],
     text: {
       en_standard:
-        "State guidance says people who live in a mobile home should plan to evacuate when a hurricane is coming, so decide now where you would go and how you would get there.",
+        "Mobile homes are among the places most likely to be evacuated in a hurricane. Follow evacuation orders, and decide now where you would go and how you would get there.",
       en_plain:
-        "State guidance says to leave a mobile home when a hurricane is coming. Decide now where you will go and how you will get there.",
+        "Mobile homes are often told to leave in a hurricane. Follow evacuation orders. Decide now where you will go and how you will get there.",
     },
     links: [
       {
         label: "Florida Public Hurricane Education Network",
         url: "https://floridastorms.org/plan-and-prepare/",
       },
+      { label: "Know your zone", url: "https://floridadisaster.org/knowyourzone" },
     ],
     needs_check: false,
-    verified_on: null,
+    verified_on: VERIFIED,
   },
   {
     id: "no_car",
@@ -113,7 +124,7 @@ export const modules: PlanModule[] = [
     applies_when_any: [{ field: "transport", in: ["no_car", "cannot_drive"] }],
     text: {
       en_standard:
-        "Arrange your ride before you need it. Ask family, friends, or neighbors now. If you may qualify, ask the county about the Special Needs Registry, which can arrange transportation. When a storm is near, check the county's live channels for ride programs: during Hurricane Milton in 2024 the county offered free rides to shelters, but offers change with each storm.",
+        "Arrange your ride before you need it. Ask family, friends, or neighbors now. If you may qualify, ask the county about the Special Needs Registry, which can arrange transportation. When a storm is near, check the county's live updates for ride programs, because offers change with each storm.",
       en_plain:
         "Plan your ride before a storm comes. Ask family, friends, or neighbors now. The county's special needs list can arrange rides for people who qualify. When a storm is close, check the county's live updates for ride offers, because they change with each storm.",
     },
@@ -122,13 +133,10 @@ export const modules: PlanModule[] = [
         label: "Special Needs Registry (Alachua County)",
         url: "https://alachuacounty.us/Depts/EM/Pages/special-needs-registry.aspx",
       },
-      {
-        label: "Hurricane Milton shelter and ride information",
-        url: "https://cammack.house.gov/hurricane-preparedness/general-preparation-recovery-information",
-      },
+      { label: "Alachua County Ready", url: "https://alachuacountyready.com" },
     ],
-    needs_check: true,
-    verified_on: null,
+    needs_check: false,
+    verified_on: VERIFIED,
   },
   {
     id: "kit",
@@ -137,9 +145,9 @@ export const modules: PlanModule[] = [
     applies_when_any: [],
     text: {
       en_standard:
-        "Build a kit that can last at least seven days: about a gallon of water per person per day, non-perishable food and a can opener, and any medical supplies you use. Refill essential prescriptions early and expect that power could be out for days.",
+        "Build a kit that can last at least seven days: one gallon of water per person per day, non-perishable food and a can opener, and any prescription medicines and medical supplies you use. Keep copies of important papers, such as ID and insurance, in a waterproof container. Power outages are common in hurricanes.",
       en_plain:
-        "Get supplies for 7 days: 1 gallon of water per person each day, food that does not need a fridge, a can opener, and your medical supplies. Refill your medicines early. Power may be out for days.",
+        "Get supplies for 7 days: 1 gallon of water per person each day, food that does not need a fridge, a can opener, and your medicines. Keep copies of your ID and insurance papers in a waterproof bag. Power outages are common in hurricanes.",
     },
     links: [
       {
@@ -147,12 +155,12 @@ export const modules: PlanModule[] = [
         url: "https://www.floridahealth.gov/individual-family-health/preparedness/",
       },
       {
-        label: "Alachua County storm checklist (news)",
-        url: "https://alachuachronicle.com/hurricane-milton-update-1-sandbags-and-special-needs-registry/",
+        label: "Disaster supply kit checklist (Florida Disaster)",
+        url: "https://www.floridadisaster.org/planprepare/hurricane-supply-checklist/",
       },
     ],
     needs_check: false,
-    verified_on: null,
+    verified_on: VERIFIED,
   },
   {
     id: "comm_plan",
@@ -161,7 +169,7 @@ export const modules: PlanModule[] = [
     applies_when_any: [],
     text: {
       en_standard:
-        "Write down who to call and where to meet if you are separated, and make copies of important papers such as IDs and insurance and keep them together. The printed page from this tool has blanks for you to fill in by hand.",
+        "Write down who to call and where to meet if you are separated, and keep copies of important papers such as IDs and insurance together. The printed page from this tool has blanks for you to fill in by hand.",
       en_plain:
         "Write down phone numbers and a place to meet. Copy your important papers and keep them together. Use the printed page and fill it in by hand.",
     },
@@ -169,7 +177,7 @@ export const modules: PlanModule[] = [
       { label: "Ready.gov family plan form", url: "https://www.ready.gov/plan-form" },
     ],
     needs_check: false,
-    verified_on: null,
+    verified_on: VERIFIED,
   },
   {
     id: "pets",
@@ -178,19 +186,19 @@ export const modules: PlanModule[] = [
     applies_when_any: [{ field: "has_pet_or_service_animal", equals: true }],
     text: {
       en_standard:
-        "Plan for your animals. Alachua County shelters are pet-friendly and service animals are allowed, so stock what your pet or service animal needs and bring it with you.",
+        "Plan for your animals. Service animals are allowed at emergency shelters, and the county's emergency management director has said its shelters are pet-friendly. Pack food and supplies for your pet or service animal.",
       en_plain:
-        "Plan for your animal. County shelters allow pets and service animals. Pack food and supplies for them too.",
+        "Plan for your animal. Service animals are allowed at shelters, and the county says its shelters allow pets. Pack food and supplies for them too.",
     },
     links: [
+      { label: "RTS: ADA emergency services", url: "https://go-rts.com/ada-emergency-services/" },
       {
         label: "County Emergency Management on WCJB",
         url: "https://www.wcjb.com/2026/05/31/alachua-county-provides-resources-residents-with-special-needs-preparing-hurricane-season/",
       },
-      { label: "RTS: ADA emergency services", url: "https://go-rts.com/ada-emergency-services/" },
     ],
     needs_check: false,
-    verified_on: null,
+    verified_on: VERIFIED,
   },
   {
     id: "buddy",
@@ -205,12 +213,12 @@ export const modules: PlanModule[] = [
     },
     links: [
       {
-        label: "County storm preparation reminders",
-        url: "https://alachuachronicle.com/hurricane-milton-update-1-sandbags-and-special-needs-registry/",
+        label: "Florida Department of Health: preparedness",
+        url: "https://www.floridahealth.gov/individual-family-health/preparedness/",
       },
     ],
     needs_check: false,
-    verified_on: null,
+    verified_on: VERIFIED,
   },
   {
     id: "shelter_info",
@@ -219,16 +227,16 @@ export const modules: PlanModule[] = [
     applies_when_any: [],
     text: {
       en_standard:
-        "When a storm is coming, call 3-1-1 for shelter information and check AlachuaCountyReady.com. Shelters open depending on the storm, so use the live information and not an older list.",
+        "When a storm is close, check AlachuaCountyReady.com for open shelters. In Gainesville you can also call 3-1-1 for shelter information. Shelters open depending on the storm, so use live information and not an older list.",
       en_plain:
-        "When a storm is close, call 3-1-1 to find open shelters. Check AlachuaCountyReady.com. Shelters change with each storm.",
+        "When a storm is close, check AlachuaCountyReady.com to find open shelters. In Gainesville you can also call 3-1-1. Shelters change with each storm.",
     },
     links: [
-      { label: "RTS: ADA emergency services", url: "https://go-rts.com/ada-emergency-services/" },
       { label: "Alachua County Ready", url: "https://alachuacountyready.com" },
+      { label: "RTS: ADA emergency services", url: "https://go-rts.com/ada-emergency-services/" },
     ],
     needs_check: false,
-    verified_on: null,
+    verified_on: VERIFIED,
   },
   {
     id: "what_to_bring",
@@ -240,9 +248,9 @@ export const modules: PlanModule[] = [
     ],
     text: {
       en_standard:
-        "If you go to a special needs shelter, bring your own bedding, prescription medications, any special-diet food, spare clothes, personal care items, and ID.",
+        "If you go to a special needs shelter, bring your emergency kit plus a 30-day supply of your medicines with copies of your prescriptions, medical equipment and supplies for two weeks, backup power for essential equipment, your provider's contact information and insurance cards, photo ID and important papers, and non-perishable special-diet food.",
       en_plain:
-        "If you go to a special needs shelter, bring your bedding, your medicines, special food, spare clothes, personal care items, and ID.",
+        "If you go to a special needs shelter, bring: your emergency kit, 30 days of medicines and copies of your prescriptions, your medical equipment and supplies, backup power for your equipment, doctor and insurance information, photo ID, and food for your special diet.",
     },
     links: [
       {
@@ -250,8 +258,8 @@ export const modules: PlanModule[] = [
         url: "https://www.floridadisaster.org/planprepare/disability/evacuations-and-shelters/shelter-information/what-to-take/",
       },
     ],
-    needs_check: true,
-    verified_on: null,
+    needs_check: false,
+    verified_on: VERIFIED,
   },
   {
     id: "during",
@@ -271,7 +279,7 @@ export const modules: PlanModule[] = [
       },
     ],
     needs_check: false,
-    verified_on: null,
+    verified_on: VERIFIED,
   },
   {
     id: "generator",
@@ -280,9 +288,9 @@ export const modules: PlanModule[] = [
     applies_when_any: [{ field: "relies_on_power", equals: true }],
     text: {
       en_standard:
-        "If you use a generator, run it outside and well away from windows, doors, and vents. Never run one inside a home or garage.",
+        "If you use a generator, run it outdoors, far from windows, doors, and vents. Never run one in a garage or basement. Turn it off and let it cool for at least 20 minutes before refueling.",
       en_plain:
-        "If you use a generator, keep it outside, far from windows and doors. Never run it inside your home or garage.",
+        "If you use a generator, keep it outside, far from windows and doors. Never run it in a garage or basement. Turn it off and let it cool before you add fuel.",
     },
     links: [
       {
@@ -290,8 +298,8 @@ export const modules: PlanModule[] = [
         url: "https://www.floridadisaster.org/planprepare/generator-safety/",
       },
     ],
-    needs_check: true,
-    verified_on: null,
+    needs_check: false,
+    verified_on: VERIFIED,
   },
   {
     id: "after",
@@ -300,14 +308,36 @@ export const modules: PlanModule[] = [
     applies_when_any: [],
     text: {
       en_standard:
-        "After the storm, keep following county updates, check on your neighbors, and call 3-1-1 with storm-related questions when the line is active. Call 911 for emergencies.",
+        "After the storm, keep following county updates and check on your neighbors. Call 911 for emergencies.",
       en_plain:
-        "After the storm, keep checking county updates and check on your neighbors. Call 3-1-1 with questions when the line is open. Call 911 in an emergency.",
+        "After the storm, keep checking county updates and check on your neighbors. Call 911 in an emergency.",
+    },
+    links: [{ label: "Alachua County Ready", url: "https://alachuacountyready.com" }],
+    needs_check: false,
+    verified_on: VERIFIED,
+  },
+    {
+    id: "shelter_bring",
+    phase: "coming",
+    priority: 1.5,
+    applies_when_any: [],
+    text: {
+      en_standard:
+        "If you go to a shelter, bring your emergency kit: water, non-perishable food and a can opener, your medicines, a flashlight, phone chargers, copies of important papers, and blankets or sleeping bags.",
+      en_plain:
+        "If you go to a shelter, bring your emergency kit: water, food, your medicines, a flashlight, phone chargers, your papers, and blankets.",
     },
     links: [
-      { label: "Alachua County Ready", url: "https://alachuacountyready.com" },
+      {
+        label: "What to take to a shelter (Florida Disaster)",
+        url: "https://www.floridadisaster.org/planprepare/disability/evacuations-and-shelters/shelter-information/what-to-take/",
+      },
+      {
+        label: "Florida Department of Health: preparedness",
+        url: "https://www.floridahealth.gov/individual-family-health/preparedness/",
+      },
     ],
     needs_check: false,
-    verified_on: null,
+    verified_on: "2026-09-20",
   },
 ];

@@ -25,17 +25,18 @@ export const PRINT_LINES: Record<string, PrintLine> = {
   },
   mobile_home: {
     standard:
-      "Mobile home: plan to leave when a hurricane is coming. Decide where you will go and how.",
-    plain: "Mobile home: plan to leave when a hurricane is coming. Decide where and how.",
+      "Mobile home: follow evacuation orders. Decide now where you will go and how you will get there.",
+    plain: "Mobile home: follow evacuation orders. Decide now where you will go and how.",
   },
   no_car: {
     standard:
-      "Arrange your ride now: ask family, friends, or neighbors. Ask the county about the registry.",
-    plain: "Plan your ride now. Ask family, friends, or neighbors. Ask the county for help.",
+      "Arrange your ride now: ask family, friends, or neighbors. If you may qualify, ask about the county Special Needs Registry: 352-264-6500.",
+    plain:
+      "Plan your ride now. Ask family, friends, or neighbors. The county may also help: 352-264-6500.",
   },
   kit: {
     standard:
-      "Supplies for 7 days: 1 gallon of water per person per day, food, can opener, medicines. Refill prescriptions early.",
+      "Supplies for 7 days: 1 gallon of water per person per day, food, can opener, medicines. Keep copies of ID and insurance in a waterproof bag.",
     plain: "Get supplies for 7 days: water (1 gallon each day), food, can opener, medicines.",
   },
   comm_plan: {
@@ -45,8 +46,8 @@ export const PRINT_LINES: Record<string, PrintLine> = {
   },
   pets: {
     standard:
-      "Pack food and supplies for your pet or service animal. County shelters allow them.",
-    plain: "Pack food and supplies for your animal. County shelters allow pets.",
+      "Pack food and supplies for your pet or service animal. Service animals are allowed at shelters.",
+    plain: "Pack food and supplies for your animal. Service animals are allowed at shelters.",
   },
   buddy: {
     standard:
@@ -55,13 +56,14 @@ export const PRINT_LINES: Record<string, PrintLine> = {
   },
   shelter_info: {
     standard:
-      "When a storm is close, call 3-1-1 for open shelters. Shelters change with each storm.",
-    plain: "When a storm is close, call 3-1-1 to find open shelters.",
+      "When a storm is close, check for open shelters: AlachuaCountyReady.com, or 3-1-1 in Gainesville. Shelters change with each storm.",
+    plain: "When a storm is close, find open shelters. In Gainesville, call 3-1-1.",
   },
   what_to_bring: {
     standard:
-      "Special needs shelter: bring bedding, medicines, special food, spare clothes, personal items, and ID.",
-    plain: "Special needs shelter: bring bedding, medicines, food, clothes, and ID.",
+      "Special needs shelter: bring everything on the pack list below, including 30 days of medicines and your medical equipment.",
+    plain:
+      "Special needs shelter: bring everything on the pack list below.",
   },
   during: {
     standard:
@@ -70,12 +72,16 @@ export const PRINT_LINES: Record<string, PrintLine> = {
   },
   generator: {
     standard:
-      "Run generators outside, far from windows and doors. Never inside a home or garage.",
+      "Run generators outside, far from windows and doors. Never in a garage or basement.",
     plain: "Keep generators outside, far from windows and doors. Never inside.",
   },
   after: {
     standard:
-      "Keep following county updates. Check on neighbors. Call 3-1-1 with storm questions.",
-    plain: "Check county updates. Check on neighbors. Call 3-1-1 with questions.",
+      "Keep following county updates. Check on neighbors. Call 911 for emergencies.",
+    plain: "Check county updates. Check on neighbors. Call 911 in an emergency.",
+  },
+  shelter_bring: {
+    standard: "Going to a shelter: bring the items on the pack list below.",
+    plain: "Going to a shelter: bring the things on the pack list below.",
   },
 };

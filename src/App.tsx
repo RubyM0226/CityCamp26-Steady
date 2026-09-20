@@ -95,8 +95,8 @@ export default function App() {
 
   return (
     <MotionConfig reducedMotion={settings.reduceMotion ? "always" : "user"}>
-      <div className="mx-auto flex min-h-screen max-w-2xl flex-col px-6 py-8">
-        <header className="space-y-4">
+      <div className="mx-auto flex min-h-screen max-w-2xl flex-col px-6 py-8 print:m-0 print:block print:min-h-0 print:max-w-none print:p-0">
+        <header className="space-y-4 print:hidden">
           <p className="text-xl font-bold text-accent">Storm Steps</p>
           <SettingsPanel
             settings={settings}
@@ -106,7 +106,7 @@ export default function App() {
           />
         </header>
 
-        <main className="flex-1 py-6">
+        <main className="flex-1 py-6 print:p-0">
           {screen === "start" && (
             <StartScreen
               onDescribe={() => setScreen("describe")}
