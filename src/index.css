@@ -4,4 +4,22 @@
 
 @theme {
   --font-sans: "Atkinson Hyperlegible", system-ui, sans-serif;
+  --color-paper: #faf7f2;
+  --color-ink: #1c1917;
+  --color-muted: #57534e;
+  --color-line: #d6d3d1;
+  --color-accent: #0f5c4d;
+  --color-accent-ink: #ffffff;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 4px solid var(--color-accent);
+    outline-offset: 3px;
+  }
 }
