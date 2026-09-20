@@ -4,17 +4,38 @@
 
 @theme {
   --font-sans: "Atkinson Hyperlegible", system-ui, sans-serif;
-  --color-paper: #faf7f2;
-  --color-ink: #1c1917;
-  --color-muted: #57534e;
-  --color-line: #d6d3d1;
-  --color-accent: #0f5c4d;
+  --color-paper: #f6efdf;
+  --color-card: #fffcf5;
+  --color-ink: #1d1b18;
+  --color-muted: #514c45;
+  --color-line: #ddd4c0;
+  --color-accent: #1f3b57;
   --color-accent-ink: #ffffff;
+  --color-accent-soft: #dbe6ef;
 }
 
 @layer base {
+  :root {
+    --phase-now: #0072b2;
+    --phase-now-bg: #dceaf5;
+    --phase-now-ink: #0a2f4a;
+    --phase-coming: #e69f00;
+    --phase-coming-bg: #fbead0;
+    --phase-coming-ink: #5c3d00;
+    --phase-during: #d55e00;
+    --phase-during-bg: #fbe0d0;
+    --phase-during-ink: #5c2400;
+    --phase-after: #009e73;
+    --phase-after-bg: #d3f0e6;
+    --phase-after-ink: #00402e;
+  }
+
   body {
     background-color: var(--color-paper);
+    background-image:
+      radial-gradient(900px 420px at 50% -80px, #ece2cc 0%, transparent 70%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    background-repeat: no-repeat, repeat;
     color: var(--color-ink);
   }
 
@@ -24,12 +45,16 @@
   }
 
   :root[data-contrast="high"] {
-    --color-paper: #ffffff;
-    --color-ink: #000000;
-    --color-muted: #1c1917;
-    --color-line: #000000;
-    --color-accent: #00332a;
+    --color-accent: #000000;
     --color-accent-ink: #ffffff;
+    --color-accent-soft: #e5e5e5;
+    --phase-now: #000000; --phase-now-bg: #ffffff; --phase-now-ink: #000000;
+    --phase-coming: #000000; --phase-coming-bg: #ffffff; --phase-coming-ink: #000000;
+    --phase-during: #000000; --phase-during-bg: #ffffff; --phase-during-ink: #000000;
+    --phase-after: #000000; --phase-after-bg: #ffffff; --phase-after-ink: #000000;
+  }
+  :root[data-contrast="high"] body {
+    background-image: none;
   }
 }
 
@@ -38,12 +63,35 @@
 }
 
 @media print {
-  html {
+  html:not([data-print-mode="flyer"]) {
     font-size: 12px !important;
   }
-
   body {
     background: #ffffff;
+    background-image: none;
     color: #000000;
   }
 }
+
+.wave-divider {
+  height: 20px;
+  width: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20'%3E%3Cg fill='none' stroke='%231f3b57' stroke-width='1.5'%3E%3Cpath d='M14 20 A6 6 0 0 1 26 20'/%3E%3Cpath d='M8 20 A12 12 0 0 1 32 20'/%3E%3Cpath d='M2 20 A18 18 0 0 1 38 20'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center top;
+  opacity: 0.6;
+}
+
+.wave-divider-flip {
+  transform: scaleY(-1);
+}
+
+:root[data-contrast="high"] .wave-divider {
+  opacity: 0;
+}
+
+  button:not(:disabled),
+  [role="button"],
+  summary {
+    cursor: pointer;
+  }

@@ -208,8 +208,7 @@ export default function PrintSheet({
       )}
 
       <footer className="mt-4 border-t-2 border-black pt-2 text-xs">
-        Not official guidance. Call 911 in an emergency. Made with Storm Steps
-        at CityCamp Gainesville 2026.
+        Not official guidance. Call 911 in an emergency. Made with Steady at CityCamp Gainesville 2026.
       </footer>
     </div>
   );
