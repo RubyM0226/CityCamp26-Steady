@@ -33,20 +33,17 @@
   }
 }
 
+@page {
+  margin: 0.25in;
+}
+
 @media print {
   html {
-    font-size: 14px !important;
+    font-size: 12px !important;
   }
 
   body {
     background: #ffffff;
     color: #000000;
-  }
-
-  a[href]::after {
-    content: " (" attr(href) ")";
-    font-weight: 400;
-    font-size: 0.8em;
-    word-break: break-all;
   }
 }
