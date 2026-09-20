@@ -22,4 +22,31 @@
     outline: 4px solid var(--color-accent);
     outline-offset: 3px;
   }
+
+  :root[data-contrast="high"] {
+    --color-paper: #ffffff;
+    --color-ink: #000000;
+    --color-muted: #1c1917;
+    --color-line: #000000;
+    --color-accent: #00332a;
+    --color-accent-ink: #ffffff;
+  }
+}
+
+@media print {
+  html {
+    font-size: 14px !important;
+  }
+
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-weight: 400;
+    font-size: 0.8em;
+    word-break: break-all;
+  }
 }

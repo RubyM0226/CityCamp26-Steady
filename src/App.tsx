@@ -1,33 +1,48 @@
-import { useState } from "react";
-import { MotionConfig, motion } from "motion/react";
+import { useEffect, useState } from "react";
+import { MotionConfig } from "motion/react";
 import Intake from "./components/Intake";
+import PlanView from "./components/PlanView";
+import SettingsPanel from "./components/SettingsPanel";
 import { modules } from "./content/modules";
-import { buildPlan, getText, PHASE_ORDER } from "./lib/plan";
+import { buildPlan } from "./lib/plan";
+import { DEFAULT_SETTINGS, TEXT_SIZE_PERCENT } from "./lib/settings";
+import type { Settings } from "./lib/settings";
 import { EMPTY_PROFILE } from "./types";
-import type { Phase, Profile } from "./types";
-
-const PHASE_TITLES: Record<Phase, string> = {
-  now: "Do now",
-  coming: "When a storm is coming",
-  during: "During the storm",
-  after: "After the storm",
-};
+import type { Profile } from "./types";
 
 export default function App() {
   const [profile, setProfile] = useState<Profile>(EMPTY_PROFILE);
   const [screen, setScreen] = useState<"intake" | "plan">("intake");
+  const [settings, setSettings] = useState<Settings>(DEFAULT_SETTINGS);
   const plan = buildPlan(profile, modules);
 
+  // Apply text size and contrast to the whole page.
+  useEffect(() => {
+    document.documentElement.style.fontSize = TEXT_SIZE_PERCENT[settings.textSize];
+    document.documentElement.dataset.contrast = settings.contrast;
+  }, [settings]);
+
+  function setPlainLanguage(plain: boolean) {
+    setProfile({ ...profile, reading_level: plain ? "plain" : "standard" });
+  }
+
   function startOver() {
-    setProfile(EMPTY_PROFILE);
+    // Keep the reading level so the person's preference carries over.
+    setProfile({ ...EMPTY_PROFILE, reading_level: profile.reading_level });
     setScreen("intake");
   }
 
   return (
-    <MotionConfig reducedMotion="user">
+    <MotionConfig reducedMotion={settings.reduceMotion ? "always" : "user"}>
       <div className="mx-auto flex min-h-screen max-w-2xl flex-col px-6 py-8">
-        <header>
+        <header className="space-y-4">
           <p className="text-xl font-bold text-accent">Storm Steps</p>
+          <SettingsPanel
+            settings={settings}
+            plainLanguage={profile.reading_level === "plain"}
+            onSettingsChange={setSettings}
+            onPlainLanguageChange={setPlainLanguage}
+          />
         </header>
 
         <main className="flex-1 py-6">
@@ -38,45 +53,11 @@ export default function App() {
               onDone={() => setScreen("plan")}
             />
           ) : (
-            <section>
-              <h1 className="text-3xl font-bold">Your storm plan</h1>
-              {PHASE_ORDER.map((phase) => (
-                <div key={phase} className="mt-8">
-                  <h2 className="text-2xl font-bold">{PHASE_TITLES[phase]}</h2>
-                  <ul className="mt-3 space-y-4">
-                    {plan[phase].map((planModule, index) => (
-                      <motion.li
-                        key={planModule.id}
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.05 }}
-                        className="rounded-xl border border-line bg-white p-4 text-lg"
-                      >
-                        <p>{getText(planModule, profile)}</p>
-                        <ul className="mt-2 space-y-1">
-                          {planModule.links.map((link) => (
-                            <li key={link.url}>
-                              <a href={link.url} target="_blank" rel="noreferrer" className="font-bold text-accent underline">{link.label}</a>
-                            </li>
-                          ))}
-                        </ul>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-              <button
-                type="button"
-                onClick={startOver}
-                className="mt-8 min-h-14 rounded-xl border-2 border-ink px-5 py-3 text-lg font-bold"
-              >
-                Start over
-              </button>
-            </section>
+            <PlanView profile={profile} plan={plan} onStartOver={startOver} />
           )}
         </main>
 
-        <footer className="border-t border-line pt-4 text-base text-muted">
+        <footer className="border-t border-line pt-4 text-base text-muted print:hidden">
           Not official guidance. In an emergency, call 911. Your answers stay
           in this browser.
         </footer>
