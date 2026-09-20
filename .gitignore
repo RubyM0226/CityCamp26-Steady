@@ -27,3 +27,8 @@ dist-ssr
 .env
 .env.local
 .vercel
+
+# secrets and deploy config
+.env
+.env.local
+.vercel
