@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://citycamp26-storm-planner.vercel.app',
+        target: 'https://steady-alachua.vercel.app',
         changeOrigin: true,
       },
     },
